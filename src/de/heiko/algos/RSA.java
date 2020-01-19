@@ -48,9 +48,9 @@ public class RSA {
         BigInteger phiN = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
 
         // Calculate e
-        BigInteger e = new BigInteger(4, random);
+        BigInteger e = new BigInteger(bitLength, random);
         while (!Euklid.euklid(e, phiN).equals(BigInteger.ONE)) {
-            e = new BigInteger(5, random);
+            e = new BigInteger(bitLength, random);
         }
 
         // Calculate d
