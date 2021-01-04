@@ -92,6 +92,28 @@ public class RSA {
 
 
     /**
+     * Signs a message m using a public key.
+     *
+     * @param m The message.
+     * @param publicKey The public key.
+     * @return The signature.
+     */
+    public BigInteger sign(BigInteger m, PublicKey publicKey) {
+        return encrypt(m, publicKey);
+    }
+
+    /**
+     * Signs a message m using a private key.
+     *
+     * @param m The message.
+     * @param privateKey The private key.
+     * @return The signature.
+     */
+    public BigInteger sign(BigInteger m, PrivateKey privateKey) {
+        return decrypt(m, privateKey);
+    }
+
+    /**
      * The public and private key pair.
      */
     public static class Keys {

@@ -45,4 +45,19 @@ class RSATests {
 
     }
 
+    @Test
+    void sign() {
+
+        RSA rsa = new RSA();
+        RSA.Keys keys = rsa.generateKeys(64);
+
+        BigInteger m = BigInteger.valueOf(16);
+
+        BigInteger s = rsa.sign(m, keys.privateKey);
+        BigInteger c = rsa.sign(s, keys.publicKey);
+
+        assertEquals(m, c);
+
+    }
+
 }
