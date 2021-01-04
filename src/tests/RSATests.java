@@ -1,13 +1,11 @@
 package tests;
 
 import de.heiko.algos.RSA;
-import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class RSATests {
 
@@ -15,17 +13,13 @@ class RSATests {
     void generateKeys() {
 
         RSA rsa = new RSA();
-        Pair<RSA.PublicKey, RSA.PrivateKey> keys = rsa.generateKeys(5);
+        RSA.Keys keys = rsa.generateKeys(2048);
 
-        assertNotNull(keys);
+        BigInteger m = BigInteger.valueOf(10);
+        BigInteger c = rsa.encrypt(m, keys.publicKey);
+        BigInteger m_d = rsa.decrypt(c, keys.privateKey);
 
-        assertNotNull(keys.getKey().n);
-        assertNotNull(keys.getKey().e);
-
-        assertNotNull(keys.getValue().n);
-        assertNotNull(keys.getValue().e);
-        assertNotNull(keys.getValue().d);
-
+        assertEquals(m, m_d);
     }
 
     @Test
@@ -45,7 +39,7 @@ class RSATests {
         BigInteger c = BigInteger.valueOf(722);
 
         RSA rsa = new RSA();
-        RSA.PrivateKey privateKey = new RSA.PrivateKey(BigInteger.valueOf(13), BigInteger.valueOf(899), BigInteger.valueOf(-323));
+        RSA.PrivateKey privateKey = new RSA.PrivateKey(BigInteger.valueOf(-323), BigInteger.valueOf(899));
 
         assertEquals(BigInteger.valueOf(10), rsa.decrypt(c, privateKey));
 

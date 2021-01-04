@@ -28,7 +28,11 @@ class EuklidTests {
         BigInteger a = BigInteger.valueOf(141);
         BigInteger b = BigInteger.valueOf(9);
 
-        assertEquals(new Pair<>(BigInteger.valueOf(-1), BigInteger.valueOf(16)), Euklid.euklidExtended(a, b));
+        Euklid.EuklidResult result = Euklid.euklidExtended(a, b);
+
+        assertEquals(result.d, BigInteger.valueOf(3));
+        assertEquals(result.k, BigInteger.valueOf(16));
+        assertEquals(result.l, BigInteger.valueOf(-1));
 
     }
 

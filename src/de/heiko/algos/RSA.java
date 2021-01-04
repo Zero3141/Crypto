@@ -30,7 +30,7 @@ public class RSA {
      * @param bitLength The bit length.
      * @return The key pair.
      */
-    public Pair<PublicKey, PrivateKey> generateKeys(int bitLength) {
+    public Keys generateKeys(int bitLength) {
 
         // Generate two random prime numbers
         PrimeNumber primeNumber = new PrimeNumber(random);
@@ -47,17 +47,17 @@ public class RSA {
         // Calculate phi(n)
         BigInteger phiN = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
 
-        // Calculate e
-        BigInteger e = new BigInteger(bitLength, random);
-        while (!Euklid.euklid(e, phiN).equals(BigInteger.ONE)) {
-            e = new BigInteger(bitLength, random);
-        }
+        // Use fixed value 2^(16)+1 = 65537 as e
+        BigInteger e = BigInteger.valueOf(65537);
 
         // Calculate d
-        BigInteger d = Euklid.euklidExtended(e, phiN).getKey();
+        BigInteger d = Euklid.euklidExtended(e, phiN).l;
 
         // Return the key pair
-        return new Pair<>(new PublicKey(e, n), new PrivateKey(e, n, d));
+        PublicKey publicKey = new PublicKey(e, n);
+        PrivateKey privateKey = new PrivateKey(d, n);
+
+        return new Keys(publicKey, privateKey);
     }
 
 
@@ -92,6 +92,29 @@ public class RSA {
 
 
     /**
+     * The public and private key pair.
+     */
+    public static class Keys {
+
+        public PublicKey publicKey;
+        public PrivateKey privateKey;
+
+        public Keys(PublicKey publicKey, PrivateKey privateKey) {
+            this.publicKey = publicKey;
+            this.privateKey = privateKey;
+        }
+
+        @Override
+        public String toString() {
+            return "Keys{" +
+                    "publicKey=" + publicKey +
+                    ", privateKey=" + privateKey +
+                    '}';
+        }
+
+    }
+
+    /**
      * The public key containing (n, e)
      */
     public static class PublicKey {
@@ -114,23 +137,23 @@ public class RSA {
     }
 
     /**
-     * The private key containing (n, e, d)
+     * The private key containing (d, n)
      */
-    public static class PrivateKey extends PublicKey {
+    public static class PrivateKey {
 
         public BigInteger d;
+        public BigInteger n;
 
-        public PrivateKey(BigInteger e, BigInteger n, BigInteger d) {
-            super(e, n);
+        public PrivateKey(BigInteger d, BigInteger n) {
             this.d = d;
+            this.n = n;
         }
 
         @Override
         public String toString() {
             return "PrivateKey{" +
-                    "e=" + e +
+                    "d=" + d +
                     ", n=" + n +
-                    ", d=" + d +
                     '}';
         }
 

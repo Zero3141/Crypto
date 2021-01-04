@@ -28,11 +28,12 @@ public class Euklid {
      *
      * @param a The first number.
      * @param b The second number.
-     * @return Pair.
+     * @return EuklidResult (gcd d, k, l)
      */
-    public static Pair<BigInteger, BigInteger> euklidExtended(BigInteger a, BigInteger b) {
+    public static EuklidResult euklidExtended(BigInteger a, BigInteger b) {
         EuklidResult euklidResult = euklidExtendedHelper(b, a.mod(b));
-        return new Pair<>(euklidResult.l, euklidResult.k.subtract(a.divide(b).multiply(euklidResult.l)));
+        euklidResult.k = euklidResult.k.subtract(a.divide(b).multiply(euklidResult.l));
+        return euklidResult;
     }
 
 
@@ -58,11 +59,11 @@ public class Euklid {
     /**
      * The result for the extended euklid helper.
      */
-    private static class EuklidResult {
+    public static class EuklidResult {
 
-        private BigInteger d;
-        private BigInteger k;
-        private BigInteger l;
+        public BigInteger d;
+        public BigInteger k;
+        public BigInteger l;
 
         EuklidResult(BigInteger d, BigInteger k, BigInteger l) {
             this.d = d;
