@@ -62,7 +62,7 @@ public class DiffieHellman {
 
         // Generate random number with 0 < secretKey < p
         secretKey = new BigInteger(bitLength, random);
-        while(secretKey.compareTo(pub.p) >= 0 && secretKey.compareTo(BigInteger.ZERO) > 0) {
+        while(secretKey.compareTo(pub.p) >= 0 || secretKey.compareTo(BigInteger.ZERO) <= 0) {
             secretKey = new BigInteger(bitLength, random);
         }
 
