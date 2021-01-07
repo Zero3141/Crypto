@@ -1,6 +1,6 @@
 package tests;
 
-import de.heiko.algos.ElGamal;
+import de.byheiko.algos.ElGamal;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;

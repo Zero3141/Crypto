@@ -1,9 +1,8 @@
-package de.heiko.algos;
+package de.byheiko.algos;
 
-import de.heiko.exceptions.RSAException;
-import de.heiko.maths.Euklid;
-import de.heiko.maths.PrimeNumber;
-import javafx.util.Pair;
+import de.byheiko.exceptions.RSAException;
+import de.byheiko.maths.Euklid;
+import de.byheiko.maths.PrimeNumber;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

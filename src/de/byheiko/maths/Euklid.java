@@ -1,6 +1,4 @@
-package de.heiko.maths;
-
-import javafx.util.Pair;
+package de.byheiko.maths;
 
 import java.math.BigInteger;
 

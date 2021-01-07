@@ -1,6 +1,6 @@
 package tests;
 
-import de.heiko.maths.PrimeNumber;
+import de.byheiko.maths.PrimeNumber;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;

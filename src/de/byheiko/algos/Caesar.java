@@ -1,6 +1,6 @@
-package de.heiko.algos;
+package de.byheiko.algos;
 
-import de.heiko.exceptions.CaesarException;
+import de.byheiko.exceptions.CaesarException;
 
 public class Caesar {
 

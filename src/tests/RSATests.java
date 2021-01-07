@@ -1,6 +1,6 @@
 package tests;
 
-import de.heiko.algos.RSA;
+import de.byheiko.algos.RSA;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;

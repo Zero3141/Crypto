@@ -1,6 +1,6 @@
 package tests;
 
-import de.heiko.algos.Caesar;
+import de.byheiko.algos.Caesar;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,4 +1,4 @@
-package de.heiko.maths;
+package de.byheiko.maths;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

@@ -1,6 +1,6 @@
 package tests;
 
-import de.heiko.algos.DiffieHellman;
+import de.byheiko.algos.DiffieHellman;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;

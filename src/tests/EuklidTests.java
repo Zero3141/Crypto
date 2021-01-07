@@ -1,7 +1,6 @@
 package tests;
 
-import de.heiko.maths.Euklid;
-import javafx.util.Pair;
+import de.byheiko.maths.Euklid;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
